@@ -1,87 +1,54 @@
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-class Sequence{
+class Base{
 public:
-    Sequence(string _word);
-    string run();
-    string word;
+    Base(){};
 };
 
-class SeqRepeat:public Sequence {
+class Derived1:public Base{
 public:
-    SeqRepeat(string _word);
-    string run();
+    Derived1(){};
+    string run(){
+        cout << "insde Derived 1 run." << endl;
+        string res = "result";
+        return res;
+    }
 };
 
-class Interver:public Sequence {
+class Derived2:public Base{
 public:
-    Interver(string _word);
-    string run();
-    // int i;
+    Derived2(){};
+    string run(){
+        cout << "insde Derived 2 run." << endl;
+        string res = "result";
+        return res;
+    }
 };
 
-// class SeqExtract:public Sequence {
-// public:
-//     SeqExtract(string _word);
-//     string run();
-// };
-
-// class SeqVariant:public Sequence {
-// public:
-//     SeqVariant(string _word);
-//     string run();
-// };
-
-Sequence::Sequence(string _word){
-    word = _word;
-}
-
-
-SeqRepeat::SeqRepeat(string _word): Sequence(_word){};
-
-string SeqRepeat::run(){
-    cout << "I am inside SeqRepeat "  << word << endl;
+class Derived3:public Base{
+public:
+    Derived3(){};
+    string run(){
+        cout << "insde Derived 3 run." << endl;
+        string res = "result";
+        return res;
+    }
 };
-
-
-Interver::Interver(string _word): Sequence(_word){}
-string Interver::run(){
-    cout << "I am inside Interver "  << word << endl;
-};
-
-
-// SeqExtract::SeqExtract(string _word): Sequence(_word){};
-
-// string SeqExtract::run(){
-//     cout << "I am inside SeqExtract "  << word << endl;
-// };
-
-
-// SeqVariant::SeqVariant(string _word): Sequence(_word){};
-
-// string SeqVariant::run(){
-//     cout << "I am inside SeqVariant"  << word << endl;
-// };
-
 
 int main(){
+    cout << "starting the app." << endl;
 
-    string st1 = "Hello";
-    string st2 = "Heelo2";
-    SeqRepeat sr(st1);
-    sr.run();
+    Derived1 d;
+    string res = d.run();
 
-    Interver inverter(st2);
-    inverter.run();
-
-    // SeqExtract se("Hello");
-    // se.run();
+    Derived2 d2;
+    res = d2.run();
 
 
-    // SeqVariant sv("Hello");
-    // sv.run();
+    Derived3 d3;
+    res = d3.run();
+    
     return 0;
 }
