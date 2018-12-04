@@ -10,31 +10,41 @@ public:
     string word;
 };
 
-class Derived1:public Base{
+class SeqRepeat:public Base{
 public:
-    Derived1(string _word):Base(_word){};
+    SeqRepeat(string _word):Base(_word){};
     string run(){
-        cout << "insde Derived 1 run." << endl;
+        cout << "insde SeqRepeat run."<< word << endl;
         string res = "result";
         return res;
     }
 };
 
-class Derived2:public Base{
+class SeqExtract:public Base{
 public:
-    Derived2(string _word):Base(_word){};
+    SeqExtract(string _word):Base(_word){};
     string run(){
-        cout << "insde Derived 2 run." << endl;
+        cout << "insde SeqExtract run."<< word << endl;
         string res = "result";
         return res;
     }
 };
 
-class Derived3:public Base{
+class SeqVariant:public Base{
 public:
-    Derived3(string _word):Base(_word){};
+    SeqVariant(string _word):Base(_word){};
     string run(){
-        cout << "insde Derived 3 run." << endl;
+        cout << "insde SeqVariant run." << word << endl;
+        string res = "result";
+        return res;
+    }
+};
+
+class Inverter:public Base{
+public:
+    Inverter(string _word):Base(_word){};
+    string run(){
+        cout << "insde Inverter run." << word << endl;
         string res = "result";
         return res;
     }
@@ -43,15 +53,18 @@ public:
 int main(){
     cout << "starting the app." << endl;
 
-    Derived1 d("h1");
+    SeqRepeat d("h1");
     string res = d.run();
 
-    Derived2 d2("h1");
+    SeqExtract d2("h2");
     res = d2.run();
 
 
-    Derived3 d3("h1");
+    SeqVariant d3("h3");
     res = d3.run();
+
+    Inverter d4("h4");
+    res = d4.run();
 
     return 0;
 }
