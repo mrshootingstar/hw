@@ -4,12 +4,15 @@ using namespace std;
 
 class Base{
 public:
-    Base(){};
+    Base(string _word){
+        word = _word;
+    };
+    string word;
 };
 
 class Derived1:public Base{
 public:
-    Derived1(){};
+    Derived1(string _word):Base(_word){};
     string run(){
         cout << "insde Derived 1 run." << endl;
         string res = "result";
@@ -19,7 +22,7 @@ public:
 
 class Derived2:public Base{
 public:
-    Derived2(){};
+    Derived2(string _word):Base(_word){};
     string run(){
         cout << "insde Derived 2 run." << endl;
         string res = "result";
@@ -29,7 +32,7 @@ public:
 
 class Derived3:public Base{
 public:
-    Derived3(){};
+    Derived3(string _word):Base(_word){};
     string run(){
         cout << "insde Derived 3 run." << endl;
         string res = "result";
@@ -40,15 +43,15 @@ public:
 int main(){
     cout << "starting the app." << endl;
 
-    Derived1 d;
+    Derived1 d("h1");
     string res = d.run();
 
-    Derived2 d2;
+    Derived2 d2("h1");
     res = d2.run();
 
 
-    Derived3 d3;
+    Derived3 d3("h1");
     res = d3.run();
-    
+
     return 0;
 }
