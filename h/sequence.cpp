@@ -1,81 +1,77 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
 class Sequence{
 public:
-    Sequence(string _word){
-        word = _word;
-    };
     string word;
+    
+    Sequence(string _word){word=_word;};
+    Sequence(){};
+    bool is_word(){
+        bool check_length = word.length() > 2;
+        bool check_alphabet = std::all_of(word.begin(), word.end(), [](int i){
+            cout << i << endl;
+            return (i>96 && i<123);
+            }
+        );
+        return check_length && check_alphabet;
+    }
+
+    virtual string emit();
 };
 
-class SeqRepeat:public Sequence{
+class Inverter: public Sequence{
 public:
-    SeqRepeat(string _word):Sequence(_word){};
-    string run(){
-        cout << "insde SeqRepeat run."<< word << endl;
-        string res = "result";
-        return res;
+    int i;
+    Inverter(){};
+    string invert(string word){}
+};
+
+class SeqRepeat:public Inverter {
+public:
+    string emit(string word){
+
     }
 };
-
-class SeqExtract:public Sequence{
+class SeqExtract:public Inverter {
 public:
-    SeqExtract(string _word):Sequence(_word){};
-    string run(){
-        cout << "insde SeqExtract run."<< word << endl;
-        string res = "result";
-        return res;
+    string emit(string word){
+
     }
 };
-
-class SeqVariant:public Sequence{
+class SeqVariant:public Inverter {
 public:
-    SeqVariant(string _word):Sequence(_word){};
-    string run(){
-        cout << "insde SeqVariant run." << word << endl;
-        string res = "result";
-        return res;
-    }
-};
+    string emit(string word){
 
-class Inverter:public Sequence{
-public:
-    Inverter(string _word):Sequence(_word){};
-    string run(){
-        cout << "insde Inverter run." << word << endl;
-        string res = "result";
-        return res;
     }
 };
 
 int main(){
     cout << "starting the app." << endl;
 
-    // read the file
-    // loop through the lines
     std::ifstream file("words.dat");
+    if (! file.is_open()){
+        cout << "could not find the file" << endl;
+    }
+    vector<string> allwords;
     std::string line;
     while (std::getline(file, line)) {
         cout << "New Line: " << line << endl;
+        allwords.push_back(line);
     }
 
-    SeqRepeat d("h1");
-    string res = d.run();
+    string w = allwords[0];
+    Sequence sq (w);
+    SeqExtract se(w);
+    SeqRepeat sq(w);
+    SeqVariant sv(w);
 
-    SeqExtract d2("h2");
-    res = d2.run();
-
-
-    SeqVariant d3("h3");
-    res = d3.run();
-
-    Inverter d4("h4");
-    res = d4.run();
-
+    sq.guess(w)
+    
     return 0;
 }
