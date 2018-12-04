@@ -1,18 +1,21 @@
 #include <iostream>
 #include <string>
+#include <fstream>
+
+
 using namespace std;
 
-class Base{
+class Sequence{
 public:
-    Base(string _word){
+    Sequence(string _word){
         word = _word;
     };
     string word;
 };
 
-class SeqRepeat:public Base{
+class SeqRepeat:public Sequence{
 public:
-    SeqRepeat(string _word):Base(_word){};
+    SeqRepeat(string _word):Sequence(_word){};
     string run(){
         cout << "insde SeqRepeat run."<< word << endl;
         string res = "result";
@@ -20,9 +23,9 @@ public:
     }
 };
 
-class SeqExtract:public Base{
+class SeqExtract:public Sequence{
 public:
-    SeqExtract(string _word):Base(_word){};
+    SeqExtract(string _word):Sequence(_word){};
     string run(){
         cout << "insde SeqExtract run."<< word << endl;
         string res = "result";
@@ -30,9 +33,9 @@ public:
     }
 };
 
-class SeqVariant:public Base{
+class SeqVariant:public Sequence{
 public:
-    SeqVariant(string _word):Base(_word){};
+    SeqVariant(string _word):Sequence(_word){};
     string run(){
         cout << "insde SeqVariant run." << word << endl;
         string res = "result";
@@ -40,9 +43,9 @@ public:
     }
 };
 
-class Inverter:public Base{
+class Inverter:public Sequence{
 public:
-    Inverter(string _word):Base(_word){};
+    Inverter(string _word):Sequence(_word){};
     string run(){
         cout << "insde Inverter run." << word << endl;
         string res = "result";
@@ -52,6 +55,14 @@ public:
 
 int main(){
     cout << "starting the app." << endl;
+
+    // read the file
+    // loop through the lines
+    std::ifstream file("words.dat");
+    std::string line;
+    while (std::getline(file, line)) {
+        cout << "New Line: " << line << endl;
+    }
 
     SeqRepeat d("h1");
     string res = d.run();
