@@ -1,8 +1,7 @@
-#include "iostream"
-#include "string"
+#include <iostream>
+#include <string>
 
 using namespace std;
-
 
 class Sequence{
 public:
@@ -17,12 +16,12 @@ public:
     string run();
 };
 
-// class Interver:public Sequence {
-// public:
-//     Interver(string _word);
-//     string run();
-//     int i;
-// };
+class Interver:public Sequence {
+public:
+    Interver(string _word);
+    string run();
+    // int i;
+};
 
 // class SeqExtract:public Sequence {
 // public:
@@ -48,16 +47,16 @@ string SeqRepeat::run(){
 };
 
 
-// Interver::Interver(string _word): Sequence(_word){}
-// string Interver::run(){
-//     cout << "I am inside Interver"  << word << endl;
-// };
+Interver::Interver(string _word): Sequence(_word){}
+string Interver::run(){
+    cout << "I am inside Interver "  << word << endl;
+};
 
 
 // SeqExtract::SeqExtract(string _word): Sequence(_word){};
 
 // string SeqExtract::run(){
-//     cout << "I am inside SeqExtract"  << word << endl;
+//     cout << "I am inside SeqExtract "  << word << endl;
 // };
 
 
@@ -70,7 +69,19 @@ string SeqRepeat::run(){
 
 int main(){
 
-    SeqRepeat sr("Hello");
+    string st1 = "Hello";
+    string st2 = "Heelo2";
+    SeqRepeat sr(st1);
     sr.run();
+
+    Interver inverter(st2);
+    inverter.run();
+
+    // SeqExtract se("Hello");
+    // se.run();
+
+
+    // SeqVariant sv("Hello");
+    // sv.run();
     return 0;
 }
